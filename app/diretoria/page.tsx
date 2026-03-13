@@ -58,7 +58,7 @@ const board = [
     initial: "A",
     photo: "/diretoria/DrAndersonCampos.png",
     photoPosition: "center 10%",
-    formation: "Advogada e jornalista. Pós-graduada em Comunicação Jurídica.",
+    formation: "Advogado e jornalisto. Pós-graduado em Comunicação Jurídica.",
     experience: "Ampla experiência em comunicação corporativa no setor jurídico e produção de conteúdo especializado.",
     contribution: "Responsável pela presença institucional, publicações e comunicação da ABRAAM.",
   },
