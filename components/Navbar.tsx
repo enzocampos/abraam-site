@@ -36,7 +36,7 @@ export default function Navbar() {
           <img
             src="/brand/abraam-logo%20copy.png"
             alt="ABRAAM"
-            className="h-14 object-contain"
+            className="h-18 object-contain"
             style={{ filter: scrolled ? "none" : "brightness(0) invert(1)" }}
           />
         </Link>
