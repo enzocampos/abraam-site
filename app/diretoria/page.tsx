@@ -8,7 +8,6 @@ const board = [
     formation: "Graduado em Direito pela USP. Pós-graduado em Direito Empresarial.",
     experience: "Mais de 15 anos de atuação em contencioso empresarial e consultoria estratégica para empresas de grande porte.",
     contribution: "Idealizador e fundador da ABRAAM, lidera as iniciativas estratégicas e institucionais da associação.",
-    linkedin: "#",
   },
   {
     name: "Dra. Ana Beatriz Lima",
@@ -17,43 +16,38 @@ const board = [
     formation: "Mestre em Direito Digital pela FGV. Especialista em LGPD e Privacidade de Dados.",
     experience: "Professora universitária e pesquisadora. Autora de artigos sobre intersecção entre tecnologia e direito.",
     contribution: "Coordena as iniciativas de inovação tecnológica e os grupos de estudo em Direito Digital.",
-    linkedin: "#",
   },
   {
     name: "Dr. Carlos Andrade",
-    role: "Diretor Jurídico",
+    role: "Diretor Jurídico e Compliance",
     initial: "C",
     formation: "Mestre em Direito Constitucional. Especialista em Direito Público.",
     experience: "Experiência em litígios estratégicos e atuação junto ao Poder Legislativo. Consultor jurídico em Brasília.",
     contribution: "Responsável pelas notas técnicas, posicionamentos institucionais e relações com o Poder Público.",
-    linkedin: "#",
   },
   {
     name: "Dra. Fernanda Rocha",
-    role: "Secretária-Geral",
+    role: "Diretor Financeiro e de Captação",
     initial: "F",
     formation: "Especialista em Direito Tributário pela PUC-SP.",
     experience: "15 anos de experiência em consultoria tributária para empresas de médio e grande porte.",
     contribution: "Coordena as atividades administrativas e os processos de filiação da ABRAAM.",
-    linkedin: "#",
   },
   {
     name: "Dr. Roberto Fonseca",
-    role: "Diretor de Eventos",
+    role: "Diretor Acadêmico e de Qualificação",
     initial: "R",
     formation: "Graduado em Direito com especialização em Gestão de Negócios Jurídicos.",
     experience: "Experiência em organização de congressos jurídicos e relações institucionais.",
     contribution: "Planeja e coordena os eventos, congressos e encontros promovidos pela ABRAAM.",
-    linkedin: "#",
   },
   {
     name: "Dra. Patricia Alves",
-    role: "Diretora de Comunicação",
+    role: "Diretor Adjunto e Social",
     initial: "P",
     formation: "Advogada e jornalista. Pós-graduada em Comunicação Jurídica.",
     experience: "Ampla experiência em comunicação corporativa no setor jurídico e produção de conteúdo especializado.",
     contribution: "Responsável pela presença institucional, publicações e comunicação da ABRAAM.",
-    linkedin: "#",
   },
 ];
 
@@ -108,7 +102,7 @@ export default function DiretoriaPage() {
           <div className="text-center mb-16">
             <span className="inline-flex items-center gap-3 text-[#6aad45] text-xs font-bold tracking-widest uppercase mb-5">
               <span className="w-8 h-px bg-[#6aad45] inline-block" />
-              Diretoria Fundadora
+              Diretoria Executiva
               <span className="w-8 h-px bg-[#6aad45] inline-block" />
             </span>
             <p className="text-[#5a6a80] max-w-xl mx-auto font-light">
@@ -160,12 +154,6 @@ export default function DiretoriaPage() {
                     </div>
                   </div>
 
-                  <a
-                    href={member.linkedin}
-                    className="inline-flex items-center gap-2 mt-6 text-[#2683c1] text-xs font-bold hover:gap-3 transition-all"
-                  >
-                    Ver perfil no LinkedIn →
-                  </a>
                 </div>
               </div>
             ))}
