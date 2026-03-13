@@ -82,6 +82,25 @@ export default function ContatoPage() {
 
               <div className="flex gap-5">
                 <div className="w-12 h-12 rounded-xl bg-[#f4f7fb] flex items-center justify-center flex-shrink-0">
+                  <span className="text-[#2683c1] text-lg">📍</span>
+                </div>
+                <div>
+                  <h3 className="text-[#1a4a88] font-bold text-base mb-1">Endereço</h3>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Avenida+das+Nações+Unidas+14401+São+Paulo+SP"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#5a6a80] text-sm leading-relaxed font-light hover:text-[#2683c1] transition-colors"
+                  >
+                    Avenida das Nações Unidas, Nº 14401<br />
+                    Torre C2, 20º andar<br />
+                    Chácara Santo Antônio — São Paulo/SP
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex gap-5">
+                <div className="w-12 h-12 rounded-xl bg-[#f4f7fb] flex items-center justify-center flex-shrink-0">
                   <span className="text-[#2683c1] text-lg">#</span>
                 </div>
                 <div>
