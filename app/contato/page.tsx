@@ -75,7 +75,7 @@ export default function ContatoPage() {
                     href="mailto:contato@abraam.org.br"
                     className="text-[#2683c1] hover:underline text-sm font-medium"
                   >
-                    contato@abraam.org.br
+                    contato@abraam.com.br
                   </a>
                 </div>
               </div>
@@ -88,13 +88,15 @@ export default function ContatoPage() {
                   <h3 className="text-[#1a4a88] font-bold text-base mb-3">Redes Sociais</h3>
                   <div className="flex gap-3 flex-wrap">
                     {[
-                      { label: "Instagram", icon: "IG" },
-                      { label: "LinkedIn", icon: "LI" },
-                      { label: "WhatsApp", icon: "WA" },
+                      { label: "Instagram", href: "https://www.instagram.com/abraam.oficial" },
+                      { label: "LinkedIn", href: "#" },
+                      { label: "WhatsApp", href: "#" },
                     ].map((s) => (
                       <a
                         key={s.label}
-                        href="#"
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="px-4 py-2 border-2 border-[#e0e7ef] text-[#1a4a88] text-xs font-bold rounded-full hover:border-[#6aad45] hover:text-[#6aad45] transition-colors"
                       >
                         {s.label}
