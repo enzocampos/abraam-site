@@ -4,10 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 
 const areas = [
+  "Advogado",
   "Direito Civil", "Direito Empresarial", "Direito Tributário",
   "Direito Digital / LGPD", "Direito Constitucional", "Direito Trabalhista",
-  "Direito de Família", "Direito Ambiental", "Direito Penal", "Outra",
+  "Direito de Família", "Direito Ambiental", "Direito Penal", "Bacharel", "Contador",
+  "Servidor Público", "Profissionais Ligados ao Direito","Outra",
 ];
+
+const noOabAreas = ["Bacharel", "Contador", "Servidor Público", "Profissionais Ligados ao Direito"];
 
 const commissions = [
   "Comissão de Ética e Inovação",
@@ -34,12 +38,23 @@ export default function AssociesePage() {
     commissions: [] as string[], lgpd: false, newsletter: false,
   });
 
+  const hideOab = noOabAreas.includes(form.area);
+
   function handleCommission(c: string) {
     setForm((prev) => ({
       ...prev,
       commissions: prev.commissions.includes(c)
         ? prev.commissions.filter((x) => x !== c)
         : [...prev.commissions, c],
+    }));
+  }
+
+  function handleAreaChange(area: string) {
+    setForm((prev) => ({
+      ...prev,
+      area,
+      oab: noOabAreas.includes(area) ? "" : prev.oab,
+      seccional: noOabAreas.includes(area) ? "" : prev.seccional,
     }));
   }
 
@@ -127,8 +142,59 @@ export default function AssociesePage() {
           <div className="bg-white rounded-2xl p-8 md:p-12 shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-6">
 
-              {/* Dados Pessoais */}
+              {/* Atuação Profissional */}
               <div>
+                <h3 className="text-[#1a4a88] font-extrabold text-lg mb-1">Atuação Profissional</h3>
+                <div className="w-12 h-0.5 bg-[#6aad45] mb-6" />
+              </div>
+
+              <div>
+                <label className={labelClass}>
+                  Área de Atuação <span className="text-[#6aad45]">*</span>
+                </label>
+                <select
+                  required value={form.area}
+                  onChange={(e) => handleAreaChange(e.target.value)}
+                  className={inputClass}
+                >
+                  <option value="">Selecione sua área</option>
+                  {areas.map((a) => <option key={a} value={a}>{a}</option>)}
+                </select>
+              </div>
+
+              <div>
+                <label className={`${labelClass} mb-3`}>
+                  Interesse em Comissões <span className="text-[#5a6a80] font-normal text-xs">(opcional)</span>
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {commissions.map((c) => {
+                    const checked = form.commissions.includes(c);
+                    return (
+                      <label
+                        key={c}
+                        className={`flex items-center gap-3 p-4 rounded-xl cursor-pointer transition-all border-2 ${
+                          checked
+                            ? "bg-[#6aad45]/10 border-[#6aad45]"
+                            : "bg-[#f4f7fb] border-transparent hover:border-[#6aad45]/30"
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={checked}
+                          onChange={() => handleCommission(c)}
+                          className="accent-[#6aad45] w-4 h-4 flex-shrink-0"
+                        />
+                        <span className={`text-sm font-medium leading-snug ${checked ? "text-[#1a4a88]" : "text-[#5a6a80]"}`}>
+                          {c}
+                        </span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Dados Pessoais */}
+              <div className="pt-4">
                 <h3 className="text-[#1a4a88] font-extrabold text-lg mb-1">Dados Pessoais</h3>
                 <div className="w-12 h-0.5 bg-[#6aad45] mb-6" />
               </div>
@@ -145,32 +211,36 @@ export default function AssociesePage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className={labelClass}>
-                    Número da OAB <span className="text-[#6aad45]">*</span>
-                  </label>
-                  <input
-                    type="text" required value={form.oab}
-                    onChange={(e) => setForm({ ...form, oab: e.target.value })}
-                    placeholder="Ex: 123456"
-                    className={inputClass}
-                  />
+              {!hideOab && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className={labelClass}>
+                      Número da OAB{" "}
+                      <span className="text-[#5a6a80] font-normal text-xs">(opcional)</span>
+                    </label>
+                    <input
+                      type="text" value={form.oab}
+                      onChange={(e) => setForm({ ...form, oab: e.target.value })}
+                      placeholder="Ex: 123456"
+                      className={inputClass}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelClass}>
+                      Seccional{" "}
+                      <span className="text-[#5a6a80] font-normal text-xs">(opcional)</span>
+                    </label>
+                    <select
+                      value={form.seccional}
+                      onChange={(e) => setForm({ ...form, seccional: e.target.value })}
+                      className={inputClass}
+                    >
+                      <option value="">Selecione</option>
+                      {states.map((s) => <option key={s} value={s}>{s}</option>)}
+                    </select>
+                  </div>
                 </div>
-                <div>
-                  <label className={labelClass}>
-                    Seccional <span className="text-[#6aad45]">*</span>
-                  </label>
-                  <select
-                    required value={form.seccional}
-                    onChange={(e) => setForm({ ...form, seccional: e.target.value })}
-                    className={inputClass}
-                  >
-                    <option value="">Selecione</option>
-                    {states.map((s) => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </div>
-              </div>
+              )}
 
               <div>
                 <label className={labelClass}>
@@ -239,57 +309,6 @@ export default function AssociesePage() {
                     placeholder="Sua cidade"
                     className={inputClass}
                   />
-                </div>
-              </div>
-
-              {/* Atuação */}
-              <div className="pt-4">
-                <h3 className="text-[#1a4a88] font-extrabold text-lg mb-1">Atuação Profissional</h3>
-                <div className="w-12 h-0.5 bg-[#6aad45] mb-6" />
-              </div>
-
-              <div>
-                <label className={labelClass}>
-                  Área de Atuação <span className="text-[#6aad45]">*</span>
-                </label>
-                <select
-                  required value={form.area}
-                  onChange={(e) => setForm({ ...form, area: e.target.value })}
-                  className={inputClass}
-                >
-                  <option value="">Selecione sua área</option>
-                  {areas.map((a) => <option key={a} value={a}>{a}</option>)}
-                </select>
-              </div>
-
-              <div>
-                <label className={`${labelClass} mb-3`}>
-                  Interesse em Comissões <span className="text-[#5a6a80] font-normal text-xs">(opcional)</span>
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {commissions.map((c) => {
-                    const checked = form.commissions.includes(c);
-                    return (
-                      <label
-                        key={c}
-                        className={`flex items-center gap-3 p-4 rounded-xl cursor-pointer transition-all border-2 ${
-                          checked
-                            ? "bg-[#6aad45]/10 border-[#6aad45]"
-                            : "bg-[#f4f7fb] border-transparent hover:border-[#6aad45]/30"
-                        }`}
-                      >
-                        <input
-                          type="checkbox"
-                          checked={checked}
-                          onChange={() => handleCommission(c)}
-                          className="accent-[#6aad45] w-4 h-4 flex-shrink-0"
-                        />
-                        <span className={`text-sm font-medium leading-snug ${checked ? "text-[#1a4a88]" : "text-[#5a6a80]"}`}>
-                          {c}
-                        </span>
-                      </label>
-                    );
-                  })}
                 </div>
               </div>
 
