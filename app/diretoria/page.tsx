@@ -1,10 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const board = [
   {
     name: "Dr. Silvio Melo",
     role: "Presidente",
     initial: "S",
+    photo: "/diretoria/DrSilvioMelo.jpeg",
+    photoPosition: "center 10%",
     formation: "Graduado em Direito pela USP. Pós-graduado em Direito Empresarial.",
     experience: "Mais de 15 anos de atuação em contencioso empresarial e consultoria estratégica para empresas de grande porte.",
     contribution: "Idealizador e fundador da ABRAAM, lidera as iniciativas estratégicas e institucionais da associação.",
@@ -13,6 +16,8 @@ const board = [
     name: "Dra. Ana Beatriz Lima",
     role: "Vice-Presidente",
     initial: "A",
+    photo: null,
+    photoPosition: "center",
     formation: "Mestre em Direito Digital pela FGV. Especialista em LGPD e Privacidade de Dados.",
     experience: "Professora universitária e pesquisadora. Autora de artigos sobre intersecção entre tecnologia e direito.",
     contribution: "Coordena as iniciativas de inovação tecnológica e os grupos de estudo em Direito Digital.",
@@ -21,6 +26,8 @@ const board = [
     name: "Dr. Carlos Andrade",
     role: "Diretor Jurídico e Compliance",
     initial: "C",
+    photo: null,
+    photoPosition: "center",
     formation: "Mestre em Direito Constitucional. Especialista em Direito Público.",
     experience: "Experiência em litígios estratégicos e atuação junto ao Poder Legislativo. Consultor jurídico em Brasília.",
     contribution: "Responsável pelas notas técnicas, posicionamentos institucionais e relações com o Poder Público.",
@@ -29,6 +36,8 @@ const board = [
     name: "Dra. Fernanda Rocha",
     role: "Diretor Financeiro e de Captação",
     initial: "F",
+    photo: null,
+    photoPosition: "center",
     formation: "Especialista em Direito Tributário pela PUC-SP.",
     experience: "15 anos de experiência em consultoria tributária para empresas de médio e grande porte.",
     contribution: "Coordena as atividades administrativas e os processos de filiação da ABRAAM.",
@@ -37,14 +46,18 @@ const board = [
     name: "Dr. Roberto Fonseca",
     role: "Diretor Acadêmico e de Qualificação",
     initial: "R",
+    photo: null,
+    photoPosition: "center",
     formation: "Graduado em Direito com especialização em Gestão de Negócios Jurídicos.",
     experience: "Experiência em organização de congressos jurídicos e relações institucionais.",
     contribution: "Planeja e coordena os eventos, congressos e encontros promovidos pela ABRAAM.",
   },
   {
-    name: "Dra. Patricia Alves",
+    name: "Dr. Anderson Xavier de Campos",
     role: "Diretor Adjunto e Social",
-    initial: "P",
+    initial: "A",
+    photo: "/diretoria/DrAndersonCampos.png",
+    photoPosition: "center 10%",
     formation: "Advogada e jornalista. Pós-graduada em Comunicação Jurídica.",
     experience: "Ampla experiência em comunicação corporativa no setor jurídico e produção de conteúdo especializado.",
     contribution: "Responsável pela presença institucional, publicações e comunicação da ABRAAM.",
@@ -114,16 +127,28 @@ export default function DiretoriaPage() {
             {board.map((member, index) => (
               <div
                 key={member.name}
-                className="bg-[#f4f7fb] rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col"
+                className="bg-white rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col border border-[#e0e7ef]"
               >
-                {/* Header banner */}
-                <div
-                  className="h-36 flex items-center justify-center relative"
-                  style={{ background: gradients[index % gradients.length] }}
-                >
-                  <div className="w-20 h-20 rounded-full bg-white/15 border-2 border-white/30 flex items-center justify-center text-white text-3xl font-extrabold backdrop-blur-sm">
-                    {member.initial}
-                  </div>
+                {/* Photo area */}
+                <div className="relative h-72 overflow-hidden">
+                  {member.photo ? (
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      style={{ objectPosition: member.photoPosition ?? "center" }}
+                    />
+                  ) : (
+                    <div
+                      className="w-full h-full flex items-center justify-center"
+                      style={{ background: gradients[index % gradients.length] }}
+                    >
+                      <div className="w-24 h-24 rounded-full bg-white/15 border-2 border-white/30 flex items-center justify-center text-white text-4xl font-extrabold">
+                        {member.initial}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Content */}
@@ -153,7 +178,6 @@ export default function DiretoriaPage() {
                       <p className="text-[#5a6a80] font-light leading-relaxed">{member.contribution}</p>
                     </div>
                   </div>
-
                 </div>
               </div>
             ))}
