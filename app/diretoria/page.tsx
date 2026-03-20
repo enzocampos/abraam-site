@@ -8,9 +8,8 @@ const board = [
     initial: "S",
     photo: "/diretoria/DrSilvioSantello.jpeg",
     photoPosition: "center 10%",
-    formation: "Graduado em Direito pela USP. Pós-graduado em Direito Empresarial.",
-    experience: "Mais de 15 anos de atuação em contencioso empresarial e consultoria estratégica para empresas de grande porte.",
     contribution: "Idealizador e fundador da ABRAAM, lidera as iniciativas estratégicas e institucionais da associação.",
+    instagram: "https://www.instagram.com/silviosantello.adv",
   },
   {
     name: "Dr. Daniel Freitas",
@@ -18,9 +17,8 @@ const board = [
     initial: "D",
     photo: "/diretoria/DrDanielFreitas.jpeg",
     photoPosition: "center 10%",
-    formation: "Mestre em Direito Digital pela FGV. Especialista em LGPD e Privacidade de Dados.",
-    experience: "Professora universitária e pesquisadora. Autora de artigos sobre intersecção entre tecnologia e direito.",
     contribution: "Coordena as iniciativas de inovação tecnológica e os grupos de estudo em Direito Digital.",
+    instagram: "https://www.instagram.com/eusou.danielfreitas",
   },
   {
     name: "Dra. Caroline Oliva Bromerschenckel",
@@ -28,9 +26,8 @@ const board = [
     initial: "C",
     photo: "/diretoria/DraCarolineOliva.jpeg",
     photoPosition: "center 10%",
-    formation: "Mestre em Direito Constitucional. Especialista em Direito Público.",
-    experience: "Experiência em litígios estratégicos e atuação junto ao Poder Legislativo. Consultor jurídico em Brasília.",
     contribution: "Responsável pelas notas técnicas, posicionamentos institucionais e relações com o Poder Público.",
+    instagram: "https://www.instagram.com/caroline.bromerschenckel",
   },
   {
     name: "Dra. Maria José de Almeida",
@@ -38,19 +35,17 @@ const board = [
     initial: "M",
     photo: "/diretoria/DraMariaAlmeida.jpeg",
     photoPosition: "center 10%",
-    formation: "Especialista em Direito Tributário pela PUC-SP.",
-    experience: "15 anos de experiência em consultoria tributária para empresas de médio e grande porte.",
     contribution: "Coordena as atividades administrativas e os processos de filiação da ABRAAM.",
+    instagram: "https://www.instagram.com/maria.almeida.adv",
   },
   {
     name: "Dra. Fabiana Lopes P. Santello",
     role: "Diretor Acadêmico e de Qualificação",
     initial: "F",
     photo: "/diretoria/DraFabianaSantello.jpeg",
-    photoPosition: "center 10%",
-    formation: "Graduado em Direito com especialização em Gestão de Negócios Jurídicos.",
-    experience: "Experiência em organização de congressos jurídicos e relações institucionais.",
+    photoPosition: "center 20%",
     contribution: "Planeja e coordena os eventos, congressos e encontros promovidos pela ABRAAM.",
+    instagram: "https://www.instagram.com/prof.fabianalopes",
   },
   {
     name: "Dr. Anderson Xavier de Campos",
@@ -58,9 +53,8 @@ const board = [
     initial: "A",
     photo: "/diretoria/DrAndersonCampos.png",
     photoPosition: "center 10%",
-    formation: "Advogado e jornalisto. Pós-graduado em Comunicação Jurídica.",
-    experience: "Ampla experiência em comunicação corporativa no setor jurídico e produção de conteúdo especializado.",
     contribution: "Responsável pela presença institucional, publicações e comunicação da ABRAAM.",
+    instagram: "https://www.instagram.com/andersoncampos.advogado",
   },
 ];
 
@@ -158,26 +152,25 @@ export default function DiretoriaPage() {
                     {member.role}
                   </p>
 
-                  <div className="space-y-4 text-sm flex-1">
-                    <div>
-                      <span className="text-[#5a6a80] text-xs font-bold uppercase tracking-wide block mb-1.5">
-                        Formação
-                      </span>
-                      <p className="text-[#1a4a88] font-medium leading-relaxed">{member.formation}</p>
-                    </div>
-                    <div>
-                      <span className="text-[#5a6a80] text-xs font-bold uppercase tracking-wide block mb-1.5">
-                        Experiência
-                      </span>
-                      <p className="text-[#5a6a80] font-light leading-relaxed">{member.experience}</p>
-                    </div>
-                    <div>
-                      <span className="text-[#5a6a80] text-xs font-bold uppercase tracking-wide block mb-1.5">
-                        Contribuição
-                      </span>
-                      <p className="text-[#5a6a80] font-light leading-relaxed">{member.contribution}</p>
-                    </div>
+                  <div className="text-sm flex-1">
+                    <p className="text-[#5a6a80] font-light leading-relaxed">{member.contribution}</p>
                   </div>
+
+                  {member.instagram && (
+                    <a
+                      href={member.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex items-center gap-2 px-4 py-2 border-2 border-[#e0e7ef] text-[#1a4a88] text-xs font-bold rounded-full hover:border-[#E1306C] hover:text-[#E1306C] transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                      </svg>
+                      Instagram
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
